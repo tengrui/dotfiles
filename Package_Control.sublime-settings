@@ -1,0 +1,30 @@
+{
+	"bootstrapped": true,
+	"debug": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"A File Icon",
+		"Alignment",
+		"AutoPEP8",
+		"Boxy Theme",
+		"BracketHighlighter",
+		"C Improved",
+		"FileDiffs",
+		"Git",
+		"Github Tools",
+		"KeyboardSpellCheck",
+		"Markdown Preview",
+		"ModernPerl",
+		"Package Control",
+		"PackageResourceViewer",
+		"PlainTasks",
+		"SideBarEnhancements",
+		"Sublime Bookmarks",
+		"SublimeAStyleFormatter",
+		"SublimeREPL"
+	]
+}
+

@@ -1,0 +1,18 @@
+{
+	"color_scheme": "Packages/User/Color Highlighter/themes/Boxy Monokai.tmTheme",
+	"detect_indentation": false,
+	"font_size": 13,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"spell_check": true,
+	"tab_size": 4,
+	"theme": "Boxy Monokai.sublime-theme",
+	"translate_tabs_to_spaces": false
+}
+
