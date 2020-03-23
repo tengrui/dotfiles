@@ -5,7 +5,18 @@
 "   \_/ |_|_| |_| |_|_|  \___|
 "                             
 
+set nocompatible
 
+syntax on
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'morhetz/gruvbox'
+Plug 'ycm-core/YouCompleteMe'
+
+call plug#end()
 
 set number
 set cursorline
@@ -19,19 +30,13 @@ set incsearch
 set ignorecase
 set smartcase
 
-syntax on
+colorscheme gruvbox
+set background=dark
+highlight Normal guibg=NONE ctermbg=None
 
-call plug#begin('~/.vim/plugged')
+map <F2> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
-Plug 'connorholyday/vim-snazzy'
+let g:syntastic_java_checkers = []
+let g:EclimFileTypeValidate = 0
 
-" Initialize plugin system
-call plug#end()
-
-color snazzy
-
-autocmd vimenter * NERDTree
-
-let g:SnazzyTransparent = 1
