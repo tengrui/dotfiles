@@ -1,0 +1,7 @@
+pacman:
+
+
+
+yay:
+blueman
+gpointing-device-settings
