@@ -1,0 +1,8 @@
+autotiling
+fcitx5-pinyin-sougou
+glmark2
+google-chrome
+otf-openmoji
+ttf-monaco
+unigine-heaven
+yay
