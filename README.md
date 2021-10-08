@@ -1,19 +1,47 @@
 Arch Linux
 
-1. 安装Arch Linux
-2. Pacman -S vim grub efibootmgr networkmanager
-3. Pacman -S xorg i3 sudo git base-devel lightdm and gtk-greeter
-4. sudoer edit /etc/sudoers
-5. Install yay
-6. Install google-chrome-stable
-7. Install font
-8. Install alsa-utils pulseaudio-alsa pavucontrol
-9. Install feh for background picture
-10. Install picom for transparent
-11. Install Navidia driver
-12. arandr for setup.sh
-13. install nm-applet xss-lock for i3 xsession errors
-14. install fcitx5-im fcitx-addon
-15. install gluqlo & xscreensaver
-16. install sdl sdl_ttf sdx_xxx
-17. install autotiling
+1. Install Arch Linux following guide
+1.1 Install vim, networkmanager grub and efibootmgr before reboot
+    Pacman -S vim grub efibootmgr networkmanager
+
+2. Create a user and setup sudoer
+    Pacman -S vi sudo
+    sudoer edit /etc/sudoers
+
+3. Install yay
+    Pacman -S git base-devel
+    git clone ...
+    makepkg -si
+
+4. Install a tiling window manager like i3 and a desktop manager like lightdm and a greeter
+    Pacman -S i3 xorg lightdm and gtk-greeter autotiling
+
+5. Install google-chrome-stable
+6. Install font
+    awesome-terminal-font for better icon
+
+7. Install alsa-utils pulseaudio-alsa pavucontrol pasystray for sound
+
+8. Install feh for background picture
+
+9. Install nvida driver and picom for transparent
+
+10. Run arandr for multiple display settings
+
+11. install nm-applet xss-lock for i3 xsession errors
+
+12. install fcitx5-im fcitx-addon for input method
+
+13. install gluqlo & xscreensaver for screen saver
+
+14. install sdl sdl_ttf sdx_xxx
+
+15. install linux-lts linux-lts-headers and nvidia-lts
+
+16. install pcmanfm for file manager
+
+17. install startship for prompt and install rust tools
+
+18. install lxappearance dconf-editor for theme
+
+19. Install bumblebee-status for a better i3bar
