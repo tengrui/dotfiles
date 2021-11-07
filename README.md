@@ -45,3 +45,7 @@ Arch Linux
 18. install lxappearance dconf-editor for theme
 
 19. Install bumblebee-status for a better i3bar
+
+20. Setup power
+	a. /etc/systemd/logind.conf
+	b. xset q; xset -dpms
