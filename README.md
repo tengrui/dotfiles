@@ -49,3 +49,9 @@ Arch Linux
 20. Setup power
 	a. /etc/systemd/logind.conf
 	b. xset q; xset -dpms
+
+21. Install cronie
+	sudo systemctl start cronie
+	sudo systemctl enable cronie
+	cron -e
+	cron -l
