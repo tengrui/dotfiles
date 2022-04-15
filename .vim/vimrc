@@ -5,39 +5,124 @@
 "   \_/ |_|_| |_| |_|_|  \___|
 "                             
 
+" Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
 
+" Enable type file detection. Vim will be able to try to detect the type of file is use.
+filetype on
+
+" Turn syntax highlighting on.
 syntax on
 
-call plug#begin('~/.vim/plugged')
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
 
-Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
-Plug 'morhetz/gruvbox'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
+" Load an indent file for the detected file type.
+filetype indent on
 
-call plug#end()
-
+" Add numbers to the file.
 set number
-set cursorline
-set showcmd
-set wildmenu
+set relativenumber
 
+" Use highlighting when doing a search.
 set hlsearch
 exec "nohlsearch"
+
+" While searching though a file incrementally highlight matching characters as you type.
 set incsearch
 
+" Highlight cursor line underneath the cursor horizontally.
+set cursorline
+
+" Show partial command you type in the last line of the screen.
+set showcmd
+
+" Enable auto completion menu after pressing TAB.
+set wildmenu
+
+" Ignore capital letters during search.
 set ignorecase
+
+" Override the ignorecase option if searching for capital letters.
+" This will allow you to search specifically for capital letters.
 set smartcase
 
-colorscheme gruvbox
-set background=dark
-highlight Normal guibg=NONE ctermbg=None
+" There are certain files that we would never want to edit with Vim.
+" Wildmenu will ignore files with these extensions.
+set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
-map <F2> :NERDTreeToggle<CR>
+" PLUGINS ---------------------------------------------------------------- {{{
+call plug#begin('~/.vim/plugged')
+  Plug 'vim-airline/vim-airline'
+  Plug 'preservim/nerdtree'
+  Plug 'morhetz/gruvbox'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'majutsushi/tagbar'
+  Plug 'w0rp/ale'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'prabirshrestha/asyncomplete.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+" MAPPINGS --------------------------------------------------------------- {{{
+
+
+" If GUI version of Vim is running set these options.
+if has('gui_running')
+  " Set the background tone.
+  set background=dark
+  " Set the color scheme.
+  colorscheme gruvbox
+end
+
+
+" Cscope settings
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=1
+  set cst
+  set nocsverb
+  if filereadable("cscope.out")
+    cs add cscope.out
+  endif
+  set csverb
+endif
+
+
+" NERDTree specific mappings.
+" Map the F3 key to toggle NERDTree open and close.
+nnoremap <F3> :NERDTreeToggle<cr>
+
+" Have nerdtree ignore certain files and directories.
+let NERDTreeIgnore=['\.git$', '\.jpg$', '\.mp4$', '\.ogg$', '\.iso$', '\.pdf$', '\.pyc$', '\.odt$', '\.png$', '\.gif$', '\.db$']
+" Close vim if nerdtree open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+highlight Normal guibg=NONE ctermbg=None
 
 let g:syntastic_java_checkers = []
 let g:EclimFileTypeValidate = 0
+set cscopequickfix=s-,c-,d-,i-,t-,e-
+
+nmap <silent> <F5> :cs find s <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <F6> :cs find t <C-R>=expand("<cword>")<CR><CR>
+nmap <silent> <F7> :cs find c <C-R>=expand("<cword>")<CR><CR>
+
+" Tagbar
+let g:tagbar_width=25
+autocmd BufReadPost *.cpp,*.c,*.h,*.cc,*.cxx call tagbar#autoopen()
+
+set autowrite
+
+" gutentags
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
